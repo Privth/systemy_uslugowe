@@ -1,6 +1,6 @@
 
-import java.util.Scanner;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Menu {
 
@@ -20,7 +20,7 @@ public class Menu {
                             "\nPodaj liczbe: "
             );
             enteredNumber = input.nextInt();
-
+            input.nextLine();
             switch (enteredNumber) {
                 case 1: {
                     System.out.print("wpisz imie: ");
@@ -39,7 +39,14 @@ public class Menu {
                     int weight = input.nextInt();
                     System.out.print("\n");
 
-                    personArrayList.add(new Person(name, surname, age, height, weight));
+                    System.out.print("wpisz date: dzień miesiąc rok:");
+                    int day = input.nextInt();
+                    int month = input.nextInt();
+                    int year = input.nextInt();
+                    BirthdayDate date = new BirthdayDate(day, month, year);
+                    System.out.print("\n");
+
+                    personArrayList.add(new Person(name, surname, age, height, weight, date));
                     break;
                 }
                 case 2: {
@@ -50,11 +57,12 @@ public class Menu {
                     break;
                 }
                 case 3: {
-                    System.out.println("Dla której osoby chcesz poznać BMI i ilość przeżytych dni?");
+                    int arrayLength = personArrayList.size();
+                    System.out.println("Dla której osoby chcesz poznać BMI i ilość przeżytych dni?\n Jest ich: " + arrayLength + "\n");
                     System.out.print("Podaj nr osoby: ");
                     int index = input.nextInt();
-                    System.out.println("BMI: " + personArrayList.get(index - 1).obliczBMI() + "\n");
-//                    System.out.println("Ilość przeżytych dni: " + personArrayList.get(index - 1) "\n");
+                    System.out.println("BMI: " + personArrayList.get(index - 1).obliczBMI());
+                    System.out.println("Liczba przeżytych dni: " + personArrayList.get(index - 1).timeOfLivin() + "\n");
 
                     break;
                 }

@@ -1,6 +1,3 @@
-import java.time.LocalDate;
-
-
 public class BirthdayDate {
     private int day;
     private int month;
@@ -12,10 +9,18 @@ public class BirthdayDate {
         this.year = theYear;
     }
 
-    public void displayBrithdayDate() {
-        System.out.print("Data urodzenia to: " + this.day + "-" + this.month + "-" + this.year);
+
+    public int timeOfLivin() {
+        int result;
+        int years = 2019 - this.year;
+        int months = 12 - this.month;
+        int days = 31 - this.day;
+        result = years * 365 + months * 31 + days;
+        return result;
     }
 
-
+    public String displayBirthdayDay() {
+        return this.day + "/" + this.month + "/" + this.year;
+    }
 }
 
